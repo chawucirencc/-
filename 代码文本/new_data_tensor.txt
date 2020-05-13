@@ -1,4 +1,4 @@
-TensorFlow¿ò¼Ü
+TensorFlowï¿½ï¿½ï¿½
 #!/usr/bin/env.python
 # -*- coding: utf-8 -*-
 import os
@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
-from tensorflow.contrib import layers
+from tensorflow.contrib import layers # åœ¨TensorFlow2.Xç‰ˆæœ¬ä¸­åŽ»æŽ‰äº†tensorflow.contrib
 
 
 def load_data(file_path):
@@ -31,29 +31,29 @@ def plot_feature(file_data):
     plt.subplots_adjust(wspace=0.7, hspace=0.7)
     fig.add_subplot(221)
     file_data['Exited'].value_counts().plot(kind='bar', width=0.3)
-    plt.title('Á÷Ê§¿Í»§ÓëÎ´Á÷Ê§¿Í»§'); plt.xlabel('1ÎªÁ÷Ê§¿Í»§'); plt.ylabel('ÈËÊý')
+    plt.title('ï¿½ï¿½Ê§ï¿½Í»ï¿½ï¿½ï¿½Î´ï¿½ï¿½Ê§ï¿½Í»ï¿½'); plt.xlabel('1Îªï¿½ï¿½Ê§ï¿½Í»ï¿½'); plt.ylabel('ï¿½ï¿½ï¿½ï¿½')
     fig.add_subplot(222)
     file_data['Gender'].value_counts().plot(kind='bar', width=0.3)
-    plt.title('ÐÔ±ðÇé¿ö'); plt.ylabel('ÈËÊý')
+    plt.title('ï¿½Ô±ï¿½ï¿½ï¿½ï¿½'); plt.ylabel('ï¿½ï¿½ï¿½ï¿½')
     fig.add_subplot(223)
     file_data['Geography'].value_counts().plot(kind='bar')
-    plt.title('ÓÃ»§ËùÔÚ¹ú¼ÒÇé¿ö'); plt.ylabel('ÈËÊý')
+    plt.title('ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'); plt.ylabel('ï¿½ï¿½ï¿½ï¿½')
     fig.add_subplot(224)
     file_data['Age'].plot(kind='kde', color='g')
-    plt.title('ÄêÁäÆµÂÊÍ¼'); plt.xlabel('ÄêÁä')
+    plt.title('ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Í¼'); plt.xlabel('ï¿½ï¿½ï¿½ï¿½')
     # Part 2
     gender_f = file_data['Exited'][file_data['Gender'] == 'Female'].value_counts()
     gender_m = file_data['Exited'][file_data['Gender'] == 'Male'].value_counts()
     gender_Df = pd.DataFrame({'Female': gender_f, 'Male':gender_m})
     gender_Df.plot(kind='bar', stacked=True)
-    plt.title('Á÷Ê§¿Í»§ºÍÐÔ±ðµÄ¹ØÏµ'); plt.ylabel('ÈËÊý')
+    plt.title('ï¿½ï¿½Ê§ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ä¹ï¿½Ïµ'); plt.ylabel('ï¿½ï¿½ï¿½ï¿½')
 
     Geo_f = file_data['Exited'][file_data['Geography'] == 'France'].value_counts()
     Geo_s = file_data['Exited'][file_data['Geography'] == 'Spain'].value_counts()
     Geo_g = file_data['Exited'][file_data['Geography'] == 'Germany'].value_counts()
     Geo_df = pd.DataFrame({'France': Geo_f, 'Spain':Geo_s, 'Germany': Geo_g})
     Geo_df.plot(kind='bar', stacked=True)
-    plt.title('Á÷Ê§¿Í»§ºÍÓÃ»§ËùÔÚ¹ú¼ÒµÄ¹ØÏµ'); plt.ylabel('ÈËÊý')
+    plt.title('ï¿½ï¿½Ê§ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ÒµÄ¹ï¿½Ïµ'); plt.ylabel('ï¿½ï¿½ï¿½ï¿½')
     plt.show()
 
 
@@ -97,7 +97,7 @@ def feature_processing(file_data):
 
 def plot_feature_score(data):
     """
-    »­³öÌØÕ÷ÆÀ·ÖÍ¼
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
     """
     plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.rcParams['axes.unicode_minus'] = False
@@ -107,7 +107,7 @@ def plot_feature_score(data):
     score = -np.log10(select.pvalues_)
     plt.figure(figsize=(8, 4))
     plt.bar(range(len(feature)), score)
-    plt.title('¸÷¸öÌØÕ÷ÆÀ·Ö'); plt.ylabel('ÆÀ·Ö')
+    plt.title('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'); plt.ylabel('ï¿½ï¿½ï¿½ï¿½')
     plt.xticks(range(len(feature)), feature, rotation=90)
     plt.show()
 
@@ -131,7 +131,7 @@ def create_model(X, y):
     X_train_all, X_test, y_train_all, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
     train_data, ver_data, train_label, ver_label = train_test_split(X_train_all, y_train_all,
                                                                     test_size=0.2, random_state=1)
-    bath_size = 100  # ÅúÁ¿´óÐ¡
+    bath_size = 100  # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
 
     def variable_summaries(var):
         with tf.name_scope('summaries'):
@@ -148,7 +148,7 @@ def create_model(X, y):
         x = tf.placeholder(tf.float32, [None, 11], name='x_input')
         y = tf.placeholder(tf.float32, [None, 2], name='y_input')
         keep_prob = tf.placeholder(tf.float32)
-    # ÊäÈë²ã
+    # ï¿½ï¿½ï¿½ï¿½ï¿½
     with tf.name_scope('input_layer'):
         with tf.name_scope('Weight'):
             W_input = tf.Variable(tf.truncated_normal([11, 150], stddev=0.1, dtype=tf.float32), name='weight1')
@@ -160,7 +160,7 @@ def create_model(X, y):
             W_mat_b = tf.matmul(x, W_input) + b_input
         with tf.name_scope('L1'):
             L1 = tf.nn.tanh(W_mat_b)
-    # Òþ²Ø²ã
+    # ï¿½ï¿½ï¿½Ø²ï¿½
     with tf.name_scope('Hidden_layer'):
         with tf.name_scope('L1_drop'):
             L1_drop = tf.nn.dropout(L1, keep_prob)
@@ -170,33 +170,33 @@ def create_model(X, y):
             b_output = tf.Variable(tf.zeros([2])+0.1, dtype=tf.float32, name='biases2')
         with tf.name_scope('W_mat_b_1'):
             W_mat_b_1 = tf.matmul(L1_drop, W_output) + b_output
-    # Êä³ö²ã
+    # ï¿½ï¿½ï¿½ï¿½ï¿½
     with tf.name_scope('output_layer'):
         with tf.name_scope('prediction'):
             prediction = tf.nn.sigmoid(W_mat_b_1)
 
-    # ËðÊ§º¯Êý
+    # ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½
     with tf.name_scope('loss_fun'):
         with tf.name_scope('W'):
             W = tf.constant([[2, 2], [0.5, 2]], dtype=tf.float32)
         with tf.name_scope('loss'):
             loss = tf.reduce_mean(tf.square(y-prediction)) + layers.l2_regularizer(1e-4)(W)
             tf.summary.scalar('loss', loss)
-    # ÌÝ¶ÈµÝ¼õÑ§Ï°ÂÊ
+    # ï¿½Ý¶ÈµÝ¼ï¿½Ñ§Ï°ï¿½ï¿½
     with tf.name_scope('learning_rate'):
         learning_rate = tf.train.exponential_decay(2.5, global_step=1000, decay_rate=0.85, decay_steps=900)
         tf.summary.scalar('learning_rate', learning_rate)
-    # ÓÅ»¯Æ÷
+    # ï¿½Å»ï¿½ï¿½ï¿½
     with tf.name_scope('train_step'):
         train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
     init = tf.global_variables_initializer()
     tf.get_collection('prediction', prediction)
     tf.get_collection('cost', loss)
-    # ¶Ô±ÈÕæÊµÖµºÍÔ¤²âÖµ
+    # ï¿½Ô±ï¿½ï¿½ï¿½ÊµÖµï¿½ï¿½Ô¤ï¿½ï¿½Öµ
     with tf.name_scope('accuracy-all'):
         with tf.name_scope('correct_prediction'):
             correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(prediction, 1))
-        # Çó×¼È·ÂÊ
+        # ï¿½ï¿½×¼È·ï¿½ï¿½
         with tf.name_scope('accuracy'):
             accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
             tf.summary.scalar('accuracy', accuracy)

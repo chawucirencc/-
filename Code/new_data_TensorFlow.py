@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
-from tensorflow.contrib import layers
+from tensorflow.contrib import layers # 在TensorFlow2.X版本中去掉了tensorflow.contrib
 
 
 def load_data(file_path):
