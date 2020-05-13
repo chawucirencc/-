@@ -5,3 +5,5 @@ Machine learning&amp;TensorFlow
 
 
 使用TensorBoard可视化数据流，
+
+TensorFlow框架使用的是1.X的版本，在2.X的版本中去掉了tensorflow.contrib，所以在TensorFlow2.X的版本中不能运行。
